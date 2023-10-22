@@ -3,9 +3,9 @@ from copy import deepcopy
 
 class FullName:
     def __init__(self, name: str, surname: str, patronymic: str) -> None:
-        self.__name = self.__validate_name(name)
-        self.__surname = self.__validate_name(surname)
-        self.__patronymic = self.__validate_name(patronymic)
+        self.__name: str = self.__validate_name(name)
+        self.__surname: str = self.__validate_name(surname)
+        self.__patronymic: str = self.__validate_name(patronymic)
 
     def __str__(self) -> str:
         return f"{self.__name} {self.__surname} {self.__patronymic}"
@@ -19,11 +19,11 @@ class FullName:
 
 class HomeAddress:
     def __init__(self, country: str, city: str, street: str, house_number: int, flat: int):
-        self.__country = self.__validate_place(country)
-        self.__city = self.__validate_place(city)
-        self.__street = self.__validate_place(street)
-        self.__house = self.__validate_number(house_number)
-        self.__flat = self.__validate_number(flat)
+        self.__country: str = self.__validate_place(country)
+        self.__city: str = self.__validate_place(city)
+        self.__street: str = self.__validate_place(street)
+        self.__house: int = self.__validate_number(house_number)
+        self.__flat: int = self.__validate_number(flat)
 
     def __str__(self) -> str:
         return f"{self.__country}, г. {self.__city}, ул.{self.__street}, д.{self.__house}, кв.{self.__flat}"
@@ -43,10 +43,10 @@ class HomeAddress:
 
 class Person:
     def __init__(self, full_name: FullName, date_birth: str, phone: str, home_address: HomeAddress):
-        self.__name = deepcopy(full_name)
-        self.__birth = self.__validate_date(date_birth)
-        self.__phone = self.__validate_phone(phone)
-        self.__address = deepcopy(home_address)
+        self.__name: FullName = deepcopy(full_name)
+        self.__birth: str = self.__validate_date(date_birth)
+        self.__phone: str = self.__validate_phone(phone)
+        self.__address: HomeAddress = deepcopy(home_address)
 
     def __str__(self):
         return f"ФИО: {self.__name} \n" \
@@ -66,3 +66,21 @@ class Person:
             raise ValueError("Контактный телефон не может быть пустым")
 
         return phone
+
+    @property
+    def phone(self):
+        return self.__phone
+
+    @phone.setter
+    def phone(self, phone: str):
+        if len(phone) == 0:
+            raise "Контактный телефон не может быть пустым"
+        self.__phone = phone
+
+    @property
+    def home_address(self):
+        return self.__address
+
+    @home_address.setter
+    def home_address(self, home: str):
+        self.__address = home
