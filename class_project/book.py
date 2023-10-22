@@ -37,12 +37,12 @@ class Author:
 class Book:
     def __init__(self, title_book: str, year_release: int, publisher: str,
                  genre: str, author: Author, price: int):
-        self.__title: str = title_book
-        self.__release: int = year_release
-        self.__publisher: str = publisher
-        self.__genre: str = genre
+        self.__title: str = self.__validate_name_book(title_book)
+        self.__release: int = self.__validate_year_release(year_release)
+        self.__publisher: str = self.__validate_publisher(publisher)
+        self.__genre: str = self.__validate_genre(genre)
         self.__author: Author = deepcopy(author)
-        self.__price: int = price
+        self.__price: int = self.__validate_price(price)
 
     def __str__(self):
         return f"Название книги: {self.__title} \n" \
@@ -51,3 +51,33 @@ class Book:
                f"Жанр: {self.__genre} \n" \
                f"Автор: {self.__author} \n" \
                f"Цена: {self.__price} руб."
+
+    @staticmethod
+    def __validate_name_book(book: str):
+        if len(book) == 0:
+            raise ValueError("Название книги не может быть пустым")
+        return book
+
+    @staticmethod
+    def __validate_year_release(year: int):
+        if year < 1455:
+            raise ValueError("Год выпуска книги не может быть раньше 1455 года.")
+        return year
+
+    @staticmethod
+    def __validate_publisher(publisher: str):
+        if len(publisher) == 0:
+            raise ValueError("Издатель не может быть пустым")
+        return publisher
+
+    @staticmethod
+    def __validate_genre(genre: str):
+        if len(genre) == 0:
+            raise ValueError("Жанр не может быть пустым")
+        return genre
+
+    @staticmethod
+    def __validate_price(price: int):
+        if price <= 0:
+            raise ValueError("Цена не может быть отрицательной или равно нулю")
+        return price
