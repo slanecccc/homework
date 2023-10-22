@@ -81,3 +81,13 @@ class Book:
         if price <= 0:
             raise ValueError("Цена не может быть отрицательной или равно нулю")
         return price
+
+    @property
+    def title_book(self):
+        return self.__title
+
+    @title_book.setter
+    def title_book(self, title: str):
+        if len(title) == 0:
+            raise "Название не может быть пустым"
+        self.__title = title
