@@ -33,6 +33,15 @@ class Author:
             raise ValueError("Место рождения не может быть пустым")
         return place
 
+    @property
+    def name(self):
+        return self.__full_name
+
+    @name.setter
+    def name(self, full_name: str):
+        if len(full_name) == 0:
+            raise "Имя автора не может быть пустым"
+        self.__full_name = full_name
 
 class Book:
     def __init__(self, title_book: str, year_release: int, publisher: str,
