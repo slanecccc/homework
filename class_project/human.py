@@ -39,6 +39,7 @@ class HomeAddress:
     def __validate_number(num: int):
         if num <= 0:
             raise " Номер дома и квартиры не может быть отрицательным или равен нулю"
+        return num
 
 
 class Person:
@@ -82,5 +83,25 @@ class Person:
         return self.__address
 
     @home_address.setter
-    def home_address(self, home: str):
+    def home_address(self, home: HomeAddress):
+        if not isinstance(home, HomeAddress):
+            raise ValueError("Не верный адрес. Введите в формате: страна, город, улица, дом, квартира.")
         self.__address = home
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name: FullName):
+        if not isinstance(name, FullName):
+            raise ValueError("Не верное ФИО.")
+        self.__name = name
+
+    @property
+    def birth(self):
+        return self.__birth
+
+    @birth.setter
+    def birth(self, birth: str):
+        self.__birth = birth
