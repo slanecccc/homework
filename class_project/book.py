@@ -45,7 +45,7 @@ class Author:
 
 class Book:
     def __init__(self, title_book: str, year_release: int, publisher: str,
-                 genre: str, author: Author, price: int):
+                 genre: str, author: Author, price: int) -> None:
         self.__title: str = self.__validate_name_book(title_book)
         self.__release: int = self.__validate_year_release(year_release)
         self.__publisher: str = self.__validate_publisher(publisher)
@@ -53,7 +53,7 @@ class Book:
         self.__author: Author = deepcopy(author)
         self.__price: int = self.__validate_price(price)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Название книги: {self.__title} \n" \
                f"Год выпуска: {self.__release} \n" \
                f"Издатель: {self.__publisher} \n" \
@@ -97,6 +97,48 @@ class Book:
 
     @title_book.setter
     def title_book(self, title: str):
-        if len(title) == 0:
-            raise "Название не может быть пустым"
-        self.__title = title
+        self.__title = self.__validate_name_book(title)
+
+    @property
+    def year_release(self):
+        return self.__release
+
+    @year_release.setter
+    def year_release(self, year: int):
+        self.__release = self.__validate_year_release(year)
+
+    @property
+    def publisher(self):
+        return self.__publisher
+
+    @publisher.setter
+    def publisher(self, publisher:str):
+        self.__publisher = self.__validate_publisher(publisher)
+
+
+    @property
+    def genre(self):
+        return self.__genre
+
+    @genre.setter
+    def genre(self, genre: str):
+        self.__genre = self.__validate_genre(genre)
+
+
+    @property
+    def author(self):
+        return self.__author
+
+    @author.setter
+    def author(self, author: Author):
+        if not isinstance(author, Author):
+            raise ValueError("Не верно введена информация по автору")
+        self.__author = author
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, price:int):
+        self.__price = self.__validate_price(price)
