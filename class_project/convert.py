@@ -7,3 +7,7 @@ class ConvertTemperature:
     __K = 273.15
     # Константа для формулы преобразования градусов Фаренгейта(F) в Кальвина(К) и наоборот
     __F = 459.67
+
+    @staticmethod
+    def cel_to_far(degrees: float):
+        return f"{degrees * ConvertTemperature.__B + ConvertTemperature.__A} F"
