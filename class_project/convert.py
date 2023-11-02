@@ -9,5 +9,11 @@ class ConvertTemperature:
     __F = 459.67
 
     @staticmethod
+    # Преобразования градусов Цельсия в Фаренгейты
     def cel_to_far(degrees: float):
         return f"{degrees * ConvertTemperature.__B + ConvertTemperature.__A} F"
+
+    @staticmethod
+    # Преобразование градусов Фаренгейта в градусы Цельсия
+    def far_to_cel(degrees: float):
+        return f"{(degrees - ConvertTemperature.__A) / ConvertTemperature.__B} C"
