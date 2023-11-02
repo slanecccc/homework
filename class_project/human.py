@@ -86,7 +86,7 @@ class Person:
     def home_address(self, home: HomeAddress):
         if not isinstance(home, HomeAddress):
             raise ValueError("Не верный адрес. Введите в формате: страна, город, улица, дом, квартира.")
-        self.__address = home
+        self.__address = deepcopy(home)
 
     @property
     def name(self):
@@ -96,7 +96,7 @@ class Person:
     def name(self, name: FullName):
         if not isinstance(name, FullName):
             raise ValueError("Не верное ФИО.")
-        self.__name = name
+        self.__name = deepcopy(name)
 
     @property
     def birth(self):

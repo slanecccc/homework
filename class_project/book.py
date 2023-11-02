@@ -133,7 +133,7 @@ class Book:
     def author(self, author: Author):
         if not isinstance(author, Author):
             raise ValueError("Не верно введена информация по автору")
-        self.__author = author
+        self.__author = deepcopy(author)
 
     @property
     def price(self):
