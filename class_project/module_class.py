@@ -58,7 +58,7 @@ class Automobile:
     def manufacturer(self, manufacturer: Manufacturer):
         if not isinstance(manufacturer, Manufacturer):
             raise ValueError("Не верно указан производитель")
-        self.__manufacturer = manufacturer
+        self.__manufacturer = deepcopy(manufacturer)
 
     @property
     def engine_capacity(self):
