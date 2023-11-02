@@ -17,3 +17,8 @@ class ConvertTemperature:
     # Преобразование градусов Фаренгейта в градусы Цельсия
     def far_to_cel(degrees: float):
         return f"{(degrees - ConvertTemperature.__A) / ConvertTemperature.__B} C"
+
+    @staticmethod
+    # Преобразование градусов Цельсия в Кельвина
+    def cel_to_cal(degrees: float):
+        return f"{degrees + ConvertTemperature.__K} K"
