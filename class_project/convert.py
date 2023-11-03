@@ -37,3 +37,6 @@ class ConvertTemperature:
     # Преобразование градусов Кельвина В Фаренгейта
     def cal_to_far(degrees:  float):
         return f"{round(degrees * ConvertTemperature.__B - ConvertTemperature.__F, 2)} F"
+
+class ConvertLengthMeasures:
+    ...
