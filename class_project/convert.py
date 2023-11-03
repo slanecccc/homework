@@ -22,3 +22,8 @@ class ConvertTemperature:
     # Преобразование градусов Цельсия в Кельвина
     def cel_to_cal(degrees: float):
         return f"{degrees + ConvertTemperature.__K} K"
+
+    @staticmethod
+    # Преобразование градусов Кельвина в Цельсия
+    def cal_to_cel(degrees: float):
+        return f"{degrees - ConvertTemperature.__K} C"
