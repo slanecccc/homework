@@ -11,29 +11,29 @@ class ConvertTemperature:
     @staticmethod
     # Преобразования градусов Цельсия в Фаренгейты
     def cel_to_far(degrees: float):
-        return f"{degrees * ConvertTemperature.__B + ConvertTemperature.__A} F"
+        return f"{round(degrees * ConvertTemperature.__B + ConvertTemperature.__A, 2)} F"
 
     @staticmethod
     # Преобразование градусов Фаренгейта в градусы Цельсия
     def far_to_cel(degrees: float):
-        return f"{(degrees - ConvertTemperature.__A) / ConvertTemperature.__B} C"
+        return f"{round((degrees - ConvertTemperature.__A) / ConvertTemperature.__B, 2)} C"
 
     @staticmethod
     # Преобразование градусов Цельсия в Кельвина
     def cel_to_cal(degrees: float):
-        return f"{degrees + ConvertTemperature.__K} K"
+        return f"{round(degrees + ConvertTemperature.__K, 2)} K"
 
     @staticmethod
     # Преобразование градусов Кельвина в Цельсия
     def cal_to_cel(degrees: float):
-        return f"{degrees - ConvertTemperature.__K} C"
+        return f"{round(degrees - ConvertTemperature.__K, 2)} C"
 
     @staticmethod
     # Преобразование градусов Фаренгейта в Кельвина
     def far_to_cal(degrees: float):
-        return f"{(degrees + ConvertTemperature.__F) / ConvertTemperature.__B} K"
+        return f"{round((degrees + ConvertTemperature.__F) / ConvertTemperature.__B, 2)} K"
 
     @staticmethod
     # Преобразование градусов Кельвина В Фаренгейта
     def cal_to_far(degrees:  float):
-        return f"{degrees * ConvertTemperature.__B - ConvertTemperature.__F} F"
+        return f"{round(degrees * ConvertTemperature.__B - ConvertTemperature.__F, 2)} F"
