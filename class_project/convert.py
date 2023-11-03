@@ -27,3 +27,13 @@ class ConvertTemperature:
     # Преобразование градусов Кельвина в Цельсия
     def cal_to_cel(degrees: float):
         return f"{degrees - ConvertTemperature.__K} C"
+
+    @staticmethod
+    # Преобразование градусов Фаренгейта в Кельвина
+    def far_to_cal(degrees: float):
+        return f"{(degrees + ConvertTemperature.__F) / ConvertTemperature.__B} K"
+
+    @staticmethod
+    # Преобразование градусов Кельвина В Фаренгейта
+    def cal_to_far(degrees:  float):
+        return f"{degrees * ConvertTemperature.__B - ConvertTemperature.__F} F"
