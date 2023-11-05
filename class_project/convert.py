@@ -39,4 +39,9 @@ class ConvertTemperature:
         return f"{round(degrees * ConvertTemperature.__B - ConvertTemperature.__F, 2)} F"
 
 class ConvertLengthMeasures:
-    ...
+    __FOOT_CEN = 30.48  # 1 фут = 30.38 см
+    __FOOT_MET = 0.3  # 1 фут = 0.3 м
+    __INCH_CEN = 2.54  # 1 дюйм = 2.54
+    __INCH_MET = 0.025  # 1 дюйм = 0.025 м
+    __YARD_CEN = 91.44  # 1 ярд = 91.44 см
+    __YARD_MET = 0.91  # 1 ярд = 0.91 м
