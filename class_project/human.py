@@ -17,48 +17,22 @@ class FullName:
         return name
 
 
-class HomeAddress:
-    def __init__(self, country: str, city: str, street: str, house_number: int, flat: int):
-        self.__country: str = self.__validate_place(country)
-        self.__city: str = self.__validate_place(city)
-        self.__street: str = self.__validate_place(street)
-        self.__house: int = self.__validate_number(house_number)
-        self.__flat: int = self.__validate_number(flat)
-
-    def __str__(self) -> str:
-        return f"{self.__country}, г. {self.__city}, ул.{self.__street}, д.{self.__house}, кв.{self.__flat}"
-
-    @staticmethod
-    def __validate_place(place: str):
-        if len(place) == 0:
-            raise ValueError("Есть не заполненные поля домашнего адреса")
-
-        return place
-
-    @staticmethod
-    def __validate_number(num: int):
-        if num <= 0:
-            raise " Номер дома и квартиры не может быть отрицательным или равен нулю"
-        return num
-
-
 class Person:
-    def __init__(self, full_name: FullName, date_birth: str, phone: str, home_address: HomeAddress):
+    def __init__(self, full_name: FullName, age: int, phone: str) -> None:
         self.__name: FullName = deepcopy(full_name)
-        self.__birth: str = self.__validate_date(date_birth)
+        self.__age: int = self.__validate_date(age)
         self.__phone: str = self.__validate_phone(phone)
-        self.__address: HomeAddress = deepcopy(home_address)
 
     def __str__(self):
         return f"ФИО: {self.__name} \n" \
-               f"Дата рождения: {self.__birth} \n" \
+               f"Дата рождения: {self.__age} \n" \
                f"Контактный телелефон: {self.__phone} \n" \
-               f"Домашний адресс: {self.__address}"
+
 
     @staticmethod
-    def __validate_date(date: str):
-        if len(date) == 0:
-            raise ValueError("Дата рождения не может быть пустым")
+    def __validate_date(date: int):
+        if date <= 0:
+            raise ValueError("Возраст не может быть равен нулю или быть отрицательным")
         return date
 
     @staticmethod
@@ -79,16 +53,6 @@ class Person:
         self.__phone = phone
 
     @property
-    def home_address(self):
-        return self.__address
-
-    @home_address.setter
-    def home_address(self, home: HomeAddress):
-        if not isinstance(home, HomeAddress):
-            raise ValueError("Не верный адрес. Введите в формате: страна, город, улица, дом, квартира.")
-        self.__address = deepcopy(home)
-
-    @property
     def name(self):
         return self.__name
 
@@ -99,9 +63,9 @@ class Person:
         self.__name = deepcopy(name)
 
     @property
-    def birth(self):
-        return self.__birth
+    def age(self):
+        return self.__age
 
-    @birth.setter
-    def birth(self, birth: str):
-        self.__birth = birth
+    @age.setter
+    def age(self, age: int):
+        self.__age = age
