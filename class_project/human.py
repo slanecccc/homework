@@ -25,9 +25,12 @@ class Person:
 
     def __str__(self):
         return f"ФИО: {self.__name} \n" \
-               f"Дата рождения: {self.__age} \n" \
-               f"Контактный телелефон: {self.__phone} \n" \
+               f"Возраст: {self.__age} \n" \
+               f"Контактный телефон: {self.__phone} \n" \
 
+    @classmethod
+    def add_birth_day(cls, full_name: FullName, birth_day: str, phone: str):
+        ...
 
     @staticmethod
     def __validate_date(date: int):
