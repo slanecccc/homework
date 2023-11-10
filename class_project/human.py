@@ -20,7 +20,7 @@ class FullName:
 class Person:
     def __init__(self, full_name: FullName, age: int, phone: str) -> None:
         self.__name: FullName = deepcopy(full_name)
-        self.__age: int = self.__validate_date(age)
+        self.__age: int = age
         self.__phone: str = self.__validate_phone(phone)
 
     def __str__(self):
@@ -28,9 +28,10 @@ class Person:
                f"Возраст: {self.__age} \n" \
                f"Контактный телефон: {self.__phone} \n" \
 
+
     @classmethod
     def add_birth_day(cls, full_name: FullName, birth_day: str, phone: str):
-        ...
+        return cls(deepcopy(full_name), birth_day, phone)
 
     @staticmethod
     def __validate_date(date: int):
