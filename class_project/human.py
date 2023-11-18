@@ -1,5 +1,6 @@
 from copy import deepcopy
 from datetime import date
+import re
 
 
 class FullName:
@@ -48,6 +49,10 @@ class Person:
                 return current_day.year - birth_day.year
             elif birth_day.day > current_day.day:
                 return current_day.year - birth_day.year - 1
+
+    @staticmethod
+    def __validate_birth_day(day: str):
+        ...
 
     @staticmethod
     def __validate_date(date: int):
