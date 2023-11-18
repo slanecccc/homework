@@ -1,4 +1,5 @@
 from copy import deepcopy
+from datetime import date
 
 
 class FullName:
@@ -31,7 +32,22 @@ class Person:
 
     @classmethod
     def add_birth_day(cls, full_name: FullName, birth_day: str, phone: str):
-        return cls(deepcopy(full_name), birth_day, phone)
+        return cls(full_name, Person.__calc_age(birth_day), phone)
+
+    @staticmethod
+    def __calc_age(birth_day: str):
+        current_day = date.today()  # Текущая дата в формате
+        data = list(map(int, birth_day.split("-")))
+        birth_day = date(*data)
+        if birth_day.month < current_day.month:
+            return current_day.year - birth_day.year
+        elif birth_day.month > current_day.month:
+            return current_day.year - birth_day.year - 1
+        elif birth_day.month == current_day.month:
+            if birth_day.day <= current_day.day:
+                return current_day.year - birth_day.year
+            elif birth_day.day > current_day.day:
+                return current_day.year - birth_day.year - 1
 
     @staticmethod
     def __validate_date(date: int):
