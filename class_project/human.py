@@ -33,7 +33,7 @@ class Person:
 
     @classmethod
     def add_birth_day(cls, full_name: FullName, birth_day: str, phone: str):
-        return cls(full_name, Person.__calc_age(birth_day), phone)
+        return cls(full_name, Person.__calc_age(cls.__validate_birth_day(birth_day)), phone)
 
     @staticmethod
     def __calc_age(birth_day: str):
@@ -52,7 +52,11 @@ class Person:
 
     @staticmethod
     def __validate_birth_day(day: str):
-        ...
+        if re.match(r'\d{4}-(0[1-9]|1[1-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])',day):
+            return day
+        else:
+            raise ValueError("Дата рождения введена некорректно. Формат должен быть ГГГГ-ММ-ДД")
+
 
     @staticmethod
     def __validate_date(date: int):
