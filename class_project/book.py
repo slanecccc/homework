@@ -11,16 +11,24 @@ class Book:
         return f"Название книги: {self.__title} \n" \
                f"Год выпуска: {self.__release} \n" \
                f"Жанр: {self.__genre}"
+    
     @classmethod
-    def read_file_book(cls, name_file: str):
-        with open(name_file, 'r', encoding= 'utf-8') as file:
-            text = file.readlines()
-            text = [word.rstrip("\n") for word in text]
-        name_book = Book.__validate_name_book(text[0])
-        year_release = Book.__validate_year_release(int(text[1]))
-        genre = Book.__validate_genre(text[2])
+    def add_file_book(cls, list_text: list):
+        name_book = Book.__validate_name_book(list_text[0])
+        year_release = Book.__validate_year_release(int(list_text[1]))
+        genre = Book.__validate_genre(list_text[2])
         return cls(name_book, year_release, genre)
 
+    @staticmethod
+    def read_file_book(name_file: str):
+        try:
+            with open(name_file, 'r', encoding= 'utf-8') as file:
+                text = file.readlines()
+                text = [word.rstrip("\n") for word in text]
+        except FileNotFoundError:
+            print(f"Данного файла {name_file} не существует")
+        else:
+            return text
 
     @staticmethod
     def __validate_name_book(book: str):
