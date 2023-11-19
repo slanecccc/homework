@@ -21,6 +21,13 @@ class Book:
         genre = Book.__validate_genre(list_text[2])
         return cls(name_book, year_release, genre)
 
+    @property
+    def type_book(self):
+        return self.__instance_type_book
+
+    def add_type_book(self):
+        self.__instance_type_book = "Электронный экземпляр"
+
     @staticmethod
     def read_file_book(name_file: str):
         try:

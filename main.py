@@ -8,11 +8,14 @@ def main():
         person = Person(full_name, 30, "+7(905)556-43-43")
         person1 = person.add_birth_day(full_name, "1999-12-30", "+7(905)556-43-43")
         book = Book("Колобок", 1999, "Ужасы")
-        book1 = Book.read_file_book("book.txt")
+        # book.add_type_book()
+        text = Book.read_file_book("book.txt")
+        book1 = Book.add_file_book(text)
+
     except ValueError as e:
         print(e)
     else:
-        print(book)
+        print(book.type_book)
         print(book1)
 
 
