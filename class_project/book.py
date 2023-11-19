@@ -2,6 +2,8 @@ from copy import *
 
 
 class Book:
+    __instance_type_book = "Бумажный экземпляр"
+
     def __init__(self, title_book: str, year_release: int, genre: str) -> None:
         self.__title: str = self.__validate_name_book(title_book)
         self.__release: int = self.__validate_year_release(year_release)
