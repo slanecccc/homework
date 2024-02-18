@@ -26,7 +26,7 @@ class Book:
     def type_book(self):
         return self.__instance_type_book
 
-    def add_type_book(self):
+    def make_eBook(self):
         self.__instance_type_book = "Электронный экземпляр"
 
     @staticmethod

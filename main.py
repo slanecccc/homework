@@ -10,11 +10,13 @@ def main():
         book = Book("Колобок", 1999, "Ужасы")
         # book.add_type_book()
         book1 = Book.add_file_book("book.txt")
+        book1.make_eBook()
 
     except ValueError as e:
         print(e)
     else:
         print(book.type_book)
+        print(book1.type_book)
         print(book1)
 
 
