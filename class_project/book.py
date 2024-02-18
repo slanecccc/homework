@@ -15,10 +15,11 @@ class Book:
                f"Жанр: {self.__genre}"
     
     @classmethod
-    def add_file_book(cls, list_text: list):
-        name_book = Book.__validate_name_book(list_text[0])
-        year_release = Book.__validate_year_release(int(list_text[1]))
-        genre = Book.__validate_genre(list_text[2])
+    def add_file_book(cls, name_file: str):
+        list_text = Book.__read_file_book(name_file)
+        name_book = list_text[0]
+        year_release = int(list_text[1])
+        genre = list_text[2]
         return cls(name_book, year_release, genre)
 
     @property
@@ -29,7 +30,7 @@ class Book:
         self.__instance_type_book = "Электронный экземпляр"
 
     @staticmethod
-    def read_file_book(name_file: str):
+    def __read_file_book(name_file: str):
         try:
             with open(name_file, 'r', encoding= 'utf-8') as file:
                 text = file.readlines()
