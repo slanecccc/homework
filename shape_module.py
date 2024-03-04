@@ -19,16 +19,36 @@ class Square(Shape):
         self.__coordinate: tuple = coordinate
         self.__side: int = side
 
+    def area(self):
+        return self.__side * 2
+
+    def perimeter(self):
+        return self.__side * 4
+
+
+
 class Rectangle(Shape):
     def __init__(self, coordinate: tuple, width: int, height: int ):
         self.__coordinate: tuple = coordinate
         self.__width: int = width
-        self._height: int = height
+        self.__height: int = height
+
+    def area(self):
+        return self.__width * self.__height
+
+    def perimeter(self):
+        return (self.__width * self.__height) * 2
 
 class Circle(Shape):
     def __init__(self, coordinate: tuple, radius: int):
         self.__coordinate: tuple = coordinate
         self.__radius: int = radius
+
+    def area(self):
+        return self.__side * 2
+
+    def perimeter(self):
+        return self.__side * 4
 
 class Ellipse(Shape):
     ...
