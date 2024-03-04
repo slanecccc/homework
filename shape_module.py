@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from math import pi
 class Shape(ABC):
     @abstractmethod
     def area(self):
@@ -45,10 +46,10 @@ class Circle(Shape):
         self.__radius: int = radius
 
     def area(self):
-        return self.__side * 2
+        return (self.__radius * pi) ** 2
 
     def perimeter(self):
-        return self.__side * 4
+        return self.__radius * pi * 2
 
 class Ellipse(Shape):
     ...
