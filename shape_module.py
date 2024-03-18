@@ -1,19 +1,28 @@
 from abc import ABC, abstractmethod
 from math import pi, sqrt
+from prettytable import PrettyTable
 
 
 class Shape(ABC):
     @abstractmethod
     def area(self):
         ...
+
     @abstractmethod
     def perimeter(self):
         ...
+
     @abstractmethod
     def save(self):
         ...
+
     @abstractmethod
     def load(self):
+        ...
+
+    @staticmethod
+    @abstractmethod
+    def output(data_figures: list[str]) -> str:
         ...
 
 
@@ -41,9 +50,17 @@ class Square(Shape):
             squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
         return squares
 
+    @staticmethod
+    def output(data_figures: list[str]):
+        figure_list = [figure.split(";") for figure in data_figures]
+        my_tables = PrettyTable()
+        my_tables.field_names = ["№", "Тип фигуры", "Сторона", "Координаты", "Периметр", "Площадь"]
+        my_tables.add_rows(figure_list)
+        print(my_tables)
+
 
 class Rectangle(Shape):
-    def __init__(self, coordinate: tuple, width: int, height: int ):
+    def __init__(self, coordinate: tuple, width: int, height: int):
         self.__coordinate: tuple = coordinate
         self.__width: int = width
         self.__height: int = height
@@ -66,6 +83,14 @@ class Rectangle(Shape):
             squares = file.readlines()
             squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
         return squares
+
+    @staticmethod
+    def output(data_figures: list[str]):
+        figure_list = [figure.split(";") for figure in data_figures]
+        my_tables = PrettyTable()
+        my_tables.field_names = ["№", "Тип фигуры", "Ширина", "Высота", "Координаты", "Периметр", "Площадь"]
+        my_tables.add_rows(figure_list)
+        print(my_tables)
 
 
 class Circle(Shape):
@@ -92,15 +117,23 @@ class Circle(Shape):
             squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
         return squares
 
+    @staticmethod
+    def output(data_figures: list[str]):
+        figure_list = [figure.split(";") for figure in data_figures]
+        my_tables = PrettyTable()
+        my_tables.field_names = ["№", "Тип фигуры", "Радиус", "Координаты", "Периметр", "Площадь"]
+        my_tables.add_rows(figure_list)
+        print(my_tables)
+
 
 class Ellipse(Shape):
-    def __init__(self, coordinate: tuple, width_el: int, height_el: int ):
+    def __init__(self, coordinate: tuple, width_el: int, height_el: int):
         self.__coordinate: tuple = coordinate
         self.__width_el: int = width_el
         self.__height_el: int = height_el
 
     def area(self):
-        return round(pi * (self.__height_el/ 2) * (self.__width_el / 2), 2)
+        return round(pi * (self.__height_el / 2) * (self.__width_el / 2), 2)
 
     def perimeter(self):
         return round(2 * pi * sqrt((self.__width_el ** 2 + self.__height_el ** 2) / 8), 2)
@@ -108,7 +141,7 @@ class Ellipse(Shape):
     def save(self):
         name_file = "Ellipses.txt"
         with open(name_file, 'a', encoding='utf-8') as file:
-            file.writelines(["Ellipse;", str(self.__width_el) + ';', str(self.__height_el),
+            file.writelines(["Ellipse;", str(self.__width_el) + ';', str(self.__height_el) + ';',
                              str(self.__coordinate) + ';', str(self.perimeter()) + ';', str(self.area()) + "\n"])
 
     def load(self):
@@ -117,3 +150,11 @@ class Ellipse(Shape):
             squares = file.readlines()
             squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
         return squares
+
+    @staticmethod
+    def output(data_figures: list[str]):
+        figure_list = [figure.split(";") for figure in data_figures]
+        my_tables = PrettyTable()
+        my_tables.field_names = ["№", "Тип фигуры", "Ширина", "Высота", "Координаты", "Периметр", "Площадь"]
+        my_tables.add_rows(figure_list)
+        print(my_tables)
