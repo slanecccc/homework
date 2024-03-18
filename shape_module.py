@@ -29,13 +29,17 @@ class Square(Shape):
         return round(self.__side * 4, 2)
 
     def save(self):
-        __name_file = "Squares.txt"
-        with open(__name_file, 'a', encoding='utf-8') as file:
-            file.writelines(["Square,", str(self.__side) + ',', str(self.__coordinate) + ',',
-                             str(self.perimeter()) + ',', str(self.area())])
+        name_file = "Squares.txt"
+        with open(name_file, 'a', encoding='utf-8') as file:
+            file.writelines(["Square;", str(self.__side) + ';', str(self.__coordinate) + ';',
+                             str(self.perimeter()) + ';', str(self.area()) + "\n"])
 
-    def load(self):
-        ...
+    def load(self) -> list[str]:
+        name_file = "Squares.txt"
+        with open(name_file, 'r', encoding='utf-8') as file:
+            squares = file.readlines()
+            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        return squares
 
 
 class Rectangle(Shape):
@@ -51,13 +55,17 @@ class Rectangle(Shape):
         return round((self.__width * self.__height) * 2, 2)
 
     def save(self):
-        __name_file = "Rectangles.txt"
-        with open(__name_file, 'a', encoding='utf-8') as file:
-            file.writelines(["Rectangle,", str(self.__width) + ',', str(self.__height) + ',',
-                             str(self.__coordinate) + ',', str(self.perimeter()) + ',', str(self.area())])
+        name_file = "Rectangles.txt"
+        with open(name_file, 'a', encoding='utf-8') as file:
+            file.writelines(["Rectangle;", str(self.__width) + ';', str(self.__height) + ';',
+                             str(self.__coordinate) + ';', str(self.perimeter()) + ';', str(self.area()) + "\n"])
 
     def load(self):
-        ...
+        name_file = "Rectangles.txt"
+        with open(name_file, 'r', encoding='utf-8') as file:
+            squares = file.readlines()
+            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        return squares
 
 
 class Circle(Shape):
@@ -72,13 +80,18 @@ class Circle(Shape):
         return round(self.__radius * pi * 2, 2)
 
     def save(self):
-        __name_file = "Circles.txt"
-        with open(__name_file, 'a', encoding='utf-8') as file:
-            file.writelines(["Circle,", str(self.__radius) + ',',
-                             str(self.__coordinate) + ',', str(self.perimeter()) + ',', str(self.area())])
+        name_file = "Circles.txt"
+        with open(name_file, 'a', encoding='utf-8') as file:
+            file.writelines(["Circle;", str(self.__radius) + ';',
+                             str(self.__coordinate) + ';', str(self.perimeter()) + ';', str(self.area()) + "\n"])
 
     def load(self):
-        ...
+        name_file = "Circles.txt"
+        with open(name_file, 'r', encoding='utf-8') as file:
+            squares = file.readlines()
+            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        return squares
+
 
 class Ellipse(Shape):
     def __init__(self, coordinate: tuple, width_el: int, height_el: int ):
@@ -93,10 +106,14 @@ class Ellipse(Shape):
         return round(2 * pi * sqrt((self.__width_el ** 2 + self.__height_el ** 2) / 8), 2)
 
     def save(self):
-        __name_file = "Ellipses.txt"
-        with open(__name_file, 'a', encoding='utf-8') as file:
-            file.writelines(["Ellipse,", str(self.__width_el) + ',', str(self.__height_el),
-                             str(self.__coordinate) + ',', str(self.perimeter()) + ',', str(self.area())])
+        name_file = "Ellipses.txt"
+        with open(name_file, 'a', encoding='utf-8') as file:
+            file.writelines(["Ellipse;", str(self.__width_el) + ';', str(self.__height_el),
+                             str(self.__coordinate) + ';', str(self.perimeter()) + ';', str(self.area()) + "\n"])
 
     def load(self):
-        ...
+        name_file = "Ellipses.txt"
+        with open(name_file, 'r', encoding='utf-8') as file:
+            squares = file.readlines()
+            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        return squares
