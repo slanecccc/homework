@@ -45,9 +45,12 @@ class Square(Shape):
 
     def load(self) -> list[str]:
         name_file = "Squares.txt"
-        with open(name_file, 'r', encoding='utf-8') as file:
-            squares = file.readlines()
-            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        try:
+            with open(name_file, 'r', encoding='utf-8') as file:
+                squares = file.readlines()
+                squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start= 1)]
+        except FileNotFoundError:
+            print(f"Файла с названием {name_file} не существует")
         return squares
 
     @staticmethod
@@ -79,9 +82,12 @@ class Rectangle(Shape):
 
     def load(self):
         name_file = "Rectangles.txt"
-        with open(name_file, 'r', encoding='utf-8') as file:
-            squares = file.readlines()
-            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        try:
+            with open(name_file, 'r', encoding='utf-8') as file:
+                squares = file.readlines()
+                squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start= 1)]
+        except FileNotFoundError:
+            print(f"Файла с названием {name_file} не существует")
         return squares
 
     @staticmethod
@@ -112,9 +118,12 @@ class Circle(Shape):
 
     def load(self):
         name_file = "Circles.txt"
-        with open(name_file, 'r', encoding='utf-8') as file:
-            squares = file.readlines()
-            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        try:
+            with open(name_file, 'r', encoding='utf-8') as file:
+                squares = file.readlines()
+                squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start= 1)]
+        except FileNotFoundError:
+            print(f"Файла с названием {name_file} не существует")
         return squares
 
     @staticmethod
@@ -146,9 +155,13 @@ class Ellipse(Shape):
 
     def load(self):
         name_file = "Ellipses.txt"
-        with open(name_file, 'r', encoding='utf-8') as file:
-            squares = file.readlines()
-            squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start=1)]
+        try:
+            with open(name_file, 'r', encoding='utf-8') as file:
+                squares = file.readlines()
+                squares = [str(num) + ";" + figure.rstrip('\n') for num, figure in enumerate(squares, start= 1)]
+        except FileNotFoundError:
+            print(f"Файла с названием {name_file} не существует")
+
         return squares
 
     @staticmethod
